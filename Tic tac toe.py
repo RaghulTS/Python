@@ -74,3 +74,85 @@ while play_again == 'y':
 else:
     print('Bye Bye !')
 
+    
+
+# Method two    
+    
+pos_val = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+def print_board():
+    print(pos_val[0] + " | " + pos_val[1] + " | " + pos_val[2])
+    print("----------")
+    print(pos_val[3] + " | " + pos_val[4] + " | " + pos_val[5])
+    print("----------")
+    print(pos_val[6] + " | " + pos_val[7] + " | " + pos_val[8])
+
+print_board()
+
+def win_case(a):
+    global flag
+    flag = False
+    if (pos_val[0] == pos_val[1] == pos_val[2] == a):
+        flag = True
+    elif (pos_val[3] == pos_val[4] == pos_val[5] == a):
+        flag = True
+    elif (pos_val[6] == pos_val[7] == pos_val[8] == a):
+        flag = True
+    elif (pos_val[0] == pos_val[4] == pos_val[8] == a):
+        flag = True
+    elif (pos_val[6] == pos_val[4] == pos_val[2] == a):
+        flag = True
+    elif (pos_val[0] == pos_val[3] == pos_val[6] == a):
+        flag = True
+    elif (pos_val[1] == pos_val[4] == pos_val[7] == a):
+        flag = True
+    elif (pos_val[2] == pos_val[5] == pos_val[8] == a):
+        flag = True
+
+
+
+while True:
+    x = (input("Enter place for x: "))
+
+    while (x not in ['1', '2', '3', '4', '5', '6', '7', '8', '9']):
+        print("Invalid")
+        x = (input("Enter place for x: "))
+
+        
+    
+    while (pos_val[int(x)-1] == "x" or pos_val[int(x)-1] == "o"):
+        print("Invalid")
+        x = (input("Enter place for x: "))
+        
+    pos_val[int(x)-1] = "x"
+    print_board()
+    winning = "x"
+    win_case(winning)
+
+    if (flag == True):
+        print(winning , "won")
+        break
+    
+    o = (input("Enter place for o: "))
+
+    while (o not in ['1', '2', '3', '4', '5', '6', '7', '8', '9']):
+        print("Invalid")
+        o = (input("Enter place for x: "))
+
+    
+    
+    while (pos_val[int(o)-1] == "x" or pos_val[int(o)-1] == "o"):
+        print("Invalid")
+        o = (input("Enter place for o: "))
+    
+    pos_val[int(o)-1] = "o"
+    print_board()
+
+    winning = "o"
+    win_case(winning)
+    
+    if (flag == True):
+        print(winning , "won")
+        break
+
+        
+
